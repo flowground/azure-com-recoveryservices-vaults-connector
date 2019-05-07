@@ -1,0 +1,78 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "vaultName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "ARM Resource.",
+                    "properties": {
+                        "eTag": {
+                            "description": "Optional ETag.",
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "Resource Id represents the complete path to the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name associated with the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-ms-azure-resource": true
+                }
+            ],
+            "description": "Vault extended information.",
+            "properties": {
+                "properties": {
+                    "x-ms-client-flatten": true,
+                    "description": "Vault extended information.",
+                    "properties": {
+                        "algorithm": {
+                            "description": "Algorithm for Vault ExtendedInfo",
+                            "type": "string"
+                        },
+                        "encryptionKey": {
+                            "description": "Encryption key.",
+                            "type": "string"
+                        },
+                        "encryptionKeyThumbprint": {
+                            "description": "Encryption key thumbprint.",
+                            "type": "string"
+                        },
+                        "integrityKey": {
+                            "description": "Integrity key.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

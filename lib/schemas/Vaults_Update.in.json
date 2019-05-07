@@ -1,0 +1,178 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "vaultName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "allOf": [
+                        {
+                            "description": "ARM Resource.",
+                            "properties": {
+                                "eTag": {
+                                    "description": "Optional ETag.",
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "description": "Resource Id represents the complete path to the resource.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Resource name associated with the resource.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object",
+                            "x-ms-azure-resource": true
+                        }
+                    ],
+                    "description": "Tracked resource with location.",
+                    "properties": {
+                        "location": {
+                            "description": "Resource location.",
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "Patch Resource information, as returned by the resource provider.",
+            "properties": {
+                "properties": {
+                    "description": "Properties of the vault.",
+                    "properties": {
+                        "provisioningState": {
+                            "description": "Provisioning State.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "upgradeDetails": {
+                            "description": "Details for upgrading vault.",
+                            "properties": {
+                                "endTimeUtc": {
+                                    "description": "UTC time at which the upgrade operation has ended.",
+                                    "format": "date-time",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "lastUpdatedTimeUtc": {
+                                    "description": "UTC time at which the upgrade operation status was last updated.",
+                                    "format": "date-time",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "description": "Message to the user containing information about the upgrade operation.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "operationId": {
+                                    "description": "ID of the vault upgrade operation.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "previousResourceId": {
+                                    "description": "Resource ID of the vault before the upgrade.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "startTimeUtc": {
+                                    "description": "UTC time at which the upgrade operation has started.",
+                                    "format": "date-time",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "description": "Status of the vault upgrade operation.",
+                                    "enum": [
+                                        "Unknown",
+                                        "InProgress",
+                                        "Upgraded",
+                                        "Failed"
+                                    ],
+                                    "readOnly": true,
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "VaultUpgradeState"
+                                    }
+                                },
+                                "triggerType": {
+                                    "description": "The way the vault upgrade was triggered.",
+                                    "enum": [
+                                        "UserTriggered",
+                                        "ForcedUpgrade"
+                                    ],
+                                    "readOnly": true,
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "TriggerType"
+                                    }
+                                },
+                                "upgradedResourceId": {
+                                    "description": "Resource ID of the upgraded vault.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "sku": {
+                    "description": "Identifies the unique system identifier for each Azure resource.",
+                    "properties": {
+                        "name": {
+                            "description": "The Sku name.",
+                            "enum": [
+                                "Standard",
+                                "RS0"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "SkuName"
+                            }
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
